@@ -1,14 +1,17 @@
 function solution(N) {
-    const string = N.toString(2) //What is time complexity of toString(2)?
+    let maxGap = 0
     let currentGap = 0
-    let longestGap = 0
-    for (const byte of string) {
-        if (parseInt(byte)) {
-            if (currentGap > longestGap) { longestGap = currentGap }
-            currentGap = 0
-        } else {
-            currentGap++
-        }
+    while (N > 0 && N % 2 === 0) {
+        N >>= 1
     }
-    return longestGap
+    while (N > 0) {
+        if (N % 2 === 0) {
+            currentGap++
+        } else {
+            maxGap = currentGap > maxGap ? currentGap : maxGap
+            currentGap = 0
+        }
+        N >>= 1
+    }
+    return maxGap
 }
