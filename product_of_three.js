@@ -1,3 +1,11 @@
+// O(N log N)
+const solution = A => {
+    A.sort((a, b) => a - b)
+    const last = A.length - 1
+    return Math.max(A[0] * A[1] * A[last], A[last - 2] * A[last - 1] * A[last])
+}
+
+//O(N)
 const solution = A => {
     let max1 = -Infinity
     let max2 = -Infinity
